@@ -40,6 +40,8 @@ Follow these instructions to get the project running locally:
    ```bash
    flutter run
 
-📦 APK Download
-The production-ready APK for manual testing is available in the Releases section of this repository.
+## 📦 APK Download
 
+The production-ready APK for manual testing is available in the **Releases** section of this repository.
+
+* **[👉 Download Campus Notes APK](https://github.com/Kevy-k/campus_notes/releases/download/v1.0.0/app-arm64-v8a-release.apk)**
