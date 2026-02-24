@@ -29,7 +29,7 @@ Follow these instructions to get the project running locally:
 
 1. **Clone the Repository**:
    ```bash
-   git clone [https://github.com/your-username/campus_notes.git](https://github.com/Kevy-k/campus_notes.git)
+   git clone https://github.com/Kevy-k/campus_notes.git
 2. **Install Dependencies**:
    ```bash
    flutter pub get
