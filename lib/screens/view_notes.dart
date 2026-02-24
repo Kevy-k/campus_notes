@@ -34,27 +34,53 @@ class ViewNotes extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top:12,left: 18,right: 18),
+          padding: const EdgeInsets.only(top: 12, left: 18, right: 18),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Subject: ${note.subject}",
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.secondary,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14.sp
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                decoration: BoxDecoration(
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.secondary.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(20.r),
+                  border: Border.all(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.secondary.withOpacity(0.2),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.subject,
+                      size: 16.sp,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                    SizedBox(width: 6.w),
+                    Text(
+                      note.subject,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 12.h,),
+              SizedBox(height: 12.h),
               SelectableText(
                 note.description,
                 style: TextStyle(
                   fontSize: 16.sp,
                   height: 1.6,
                   letterSpacing: 0.3,
-                  color: Theme.of(context).colorScheme.secondary
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
-              )
+              ),
             ],
           ),
         ),

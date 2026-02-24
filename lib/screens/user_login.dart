@@ -113,16 +113,32 @@ class _UserLoginState extends State<UserLogin> {
 
             SizedBox(height: 20.h),
 
-            ElevatedButton(
+           ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll(
                   Theme.of(context).colorScheme.secondary,
                 ),
               ),
-              onPressed: () => Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => const HomePage()),
-              ),
-              child: Text("Login"),
+              onPressed: () {
+                
+                if (_emailController.text.trim().isEmpty || 
+                    _passwordController.text.trim().isEmpty) {
+                  
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Please enter both email and password"),
+                      backgroundColor: Colors.redAccent,
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                } else {
+                  // Navigate to HomePage if valid
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                }
+              },
+              child: const Text("Login"),
             ),
           ],
         ),

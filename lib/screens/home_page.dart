@@ -1,5 +1,6 @@
 import 'package:campus_notes/providers/note_provider.dart';
 import 'package:campus_notes/screens/edit.dart';
+import 'package:campus_notes/screens/user_login.dart';
 import 'package:campus_notes/widgets/note_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +11,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Campus Notes",style: TextStyle(color: Theme.of(context).colorScheme.secondary),)),
+      appBar: AppBar(
+        title: Text(
+          "Campus Notes",
+          style: TextStyle(color: Theme.of(context).colorScheme.secondary),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: InkWell(
+              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>UserLogin())),
+              child: Icon(Icons.logout),
+            ),
+          )
+        ],
+      ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(15.0),
         child: FloatingActionButton(
@@ -23,7 +38,7 @@ class HomePage extends StatelessWidget {
               ),
             );
           },
-          child: Icon(Icons.add,color: Theme.of(context).colorScheme.primary,),
+          child: Icon(Icons.add, color: Theme.of(context).colorScheme.primary),
         ),
       ),
 
@@ -32,27 +47,31 @@ class HomePage extends StatelessWidget {
           final my_note = notePro.notes;
 
           if (my_note.isEmpty) {
-            return  Center(child: Text("No notes yet. Tap + to add one!",style: TextStyle(color: Theme.of(context).colorScheme.secondary),));
+            return Center(
+              child: Text(
+                "No notes yet. Tap + to add one!",
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+            );
           }
 
           return ListView.builder(
             itemCount: my_note.length,
             itemBuilder: (context, index) {
-              final noteContent=my_note[index];
+              final noteContent = my_note[index];
               return NoteCard(
                 note: noteContent,
                 onDelete: () {
                   notePro.deleteNotes(index);
                 },
                 onEdit: () {
-                  
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AddEditNoteScreen(
-                        note: noteContent,
-                        index: index,
-                      ),
+                      builder: (context) =>
+                          AddEditNoteScreen(note: noteContent, index: index),
                     ),
                   );
                 },

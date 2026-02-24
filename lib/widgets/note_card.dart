@@ -44,7 +44,7 @@ class NoteCard extends StatelessWidget {
                         color: Theme.of(context).colorScheme.primary
                       ),
                       maxLines: 1,
-                      overflow: TextOverflow.ellipsis, // Adds "..." if too long
+                      overflow: TextOverflow.ellipsis, 
                     ),
                   ),
                   Row(
@@ -64,16 +64,22 @@ class NoteCard extends StatelessWidget {
               
               //subject
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                
+                padding: EdgeInsets.symmetric( vertical: 4.h),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                  
                   borderRadius: BorderRadius.circular(8.r),
                 ),
-                child: Text(
-                  note.subject,
-                  style: TextStyle(fontSize: 12.sp, color: Colors.blue),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+                child: Row(
+                  children: [
+                    Icon(Icons.subject,color: Colors.blue,size: 14,),
+                    Text(
+                      note.subject,
+                      style: TextStyle(fontSize: 12.sp, color: Colors.blue),
+                      maxLines: null,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
                 ),
               ),
               
