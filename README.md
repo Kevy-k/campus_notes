@@ -39,3 +39,7 @@ Follow these instructions to get the project running locally:
 4. **Run the Application**:
    ```bash
    flutter run
+
+📦 APK Download
+The production-ready APK for manual testing is available in the Releases section of this repository.
+
